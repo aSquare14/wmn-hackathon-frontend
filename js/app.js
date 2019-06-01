@@ -261,11 +261,38 @@ function addManueversToPanel(route) {
   routeInstructionsContainer.appendChild(nodeOL);
 }
 
+function setUpClickListener(map) {
+  // Attach an event listener to map display
+  // obtain the coordinates and display in an alert box.
+  map.addEventListener('tap', function (evt) {
+    var coord = map.screenToGeo(evt.currentPointer.viewportX,
+            evt.currentPointer.viewportY);
+    alert('Clicked at ' + Math.abs(coord.lat.toFixed(4)) +
+        ((coord.lat > 0) ? 'N' : 'S') +
+        ' ' + Math.abs(coord.lng.toFixed(4)) +
+         ((coord.lng > 0) ? 'E' : 'W'));
+  });
+}
+
+function addPolylineToMap(map) {
+  var lineString = new H.geo.LineString();
+
+  lineString.pushPoint({lat: 12.8576, lng:77.6627});
+  lineString.pushPoint({lat:12.8623,  lng:77.6487});
+  lineString.pushPoint({lat:12.8666, lng:77.6522});
+  lineString.pushPoint({lat:12.8692, lng:77.6535});
+
+  map.addObject(new H.map.Polyline(
+    lineString, { style: { 
+                            lineWidth: 4 ,
+                            strokeColor: 'rgba(214, 69, 65, 1)'}}
+  ));
+}
 
 Number.prototype.toMMSS = function () {
   return Math.floor(this / 60) + ' minutes ' + (this % 60) + ' seconds.';
 }
 
-// Now use the map as required...
+setUpClickListener(map);
 calculateRouteFromAtoB(platform);
-
+addPolylineToMap(map);
