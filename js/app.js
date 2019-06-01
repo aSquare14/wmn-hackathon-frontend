@@ -73,8 +73,11 @@ var platform = new H.service.Platform({
   useCIT: true,
   useHTTPS: true
 });
-var defaultLayers = platform.createDefaultLayers();
-
+var pixelRatio = window.devicePixelRatio || 1;
+var defaultLayers = platform.createDefaultLayers({
+  tileSize: pixelRatio === 1 ? 256 : 512,
+  ppi: pixelRatio === 1 ? undefined : 320
+});
 //Step 2: initialize a map - this map is centered over Berlin
 var map = new H.Map(mapContainer,
   defaultLayers.normal.map, {
@@ -293,6 +296,36 @@ Number.prototype.toMMSS = function () {
   return Math.floor(this / 60) + ' minutes ' + (this % 60) + ' seconds.';
 }
 
+function addSVGMarkers(map){
+  //Create the svg mark-up
+  var svgMarkup = '<svg  width="24" height="24" xmlns="http://www.w3.org/2000/svg">' +
+  '<rect stroke="black" fill="${FILL}" x="1" y="1" width="22" height="22" />' +
+  '<text x="12" y="18" font-size="12pt" font-family="Arial" font-weight="bold" ' +
+  'text-anchor="middle" fill="${STROKE}" >4</text></svg>';
+
+  var svgMarkup1 = '<svg  width="24" height="24" xmlns="http://www.w3.org/2000/svg">' +
+  '<rect stroke="black" fill="${FILL}" x="1" y="1" width="22" height="22" />' +
+  '<text x="12" y="18" font-size="12pt" font-family="Arial" font-weight="bold" ' +
+  'text-anchor="middle" fill="${STROKE}" >2.5</text></svg>';
+  // Add the first marker
+  var bearsIcon = new H.map.Icon(
+    svgMarkup.replace('${FILL}', 'blue').replace('${STROKE}', 'red')),
+    bearsMarker = new H.map.Marker({lat: 12.9202, lng: 77.621 },
+      {icon: bearsIcon});
+
+  map.addObject(bearsMarker);
+
+  //Add the second marker.
+  var cubsIcon = new H.map.Icon(
+    svgMarkup1.replace('${FILL}', 'white').replace('${STROKE}', 'orange')),
+    cubsMarker = new H.map.Marker({lat: 12.8643, lng: 77.6524 },
+      {icon: cubsIcon});
+
+  map.addObject(cubsMarker);
+}
+
 setUpClickListener(map);
 calculateRouteFromAtoB(platform);
 addPolylineToMap(map);
+addSVGMarkers(map);
+
