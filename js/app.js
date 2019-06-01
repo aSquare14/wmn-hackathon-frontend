@@ -16,11 +16,9 @@ function calculateRouteFromAtoB (platform) {
         representation: 'display',
         routeattributes : 'waypoints,summary,shape,legs',
         maneuverattributes: 'direction,action',
-        waypoint0: '52.5160,13.3779', // Brandenburg Gate
-        waypoint1: '52.5206,13.3862'  // Friedrichstraße Railway Station
+        waypoint0: '12.8448,77.6632', // Brandenburg Gate
+        waypoint1: '12.9343,77.6112'  // Friedrichstraße Railway Station
       };
-  
-  
     router.calculateRoute(
       routeRequestParams,
       onSuccess,
@@ -80,7 +78,7 @@ function calculateRouteFromAtoB (platform) {
   //Step 2: initialize a map - this map is centered over Berlin
   var map = new H.Map(mapContainer,
     defaultLayers.normal.map,{
-    center: {lat:52.5160, lng:13.3779},
+    center: {lat:12.9716, lng:77.5946},
     zoom: 13
   });
   
@@ -200,9 +198,10 @@ function calculateRouteFromAtoB (platform) {
       waypointLabels.push(waypoints[i].label)
      }
   
-     nodeH3.textContent = waypointLabels.join(' - ');
+     nodeH3.textContent = waypointLabels.join('');
   
     routeInstructionsContainer.innerHTML = '';
+    //console.log(nodeH3);
     routeInstructionsContainer.appendChild(nodeH3);
   }
   
@@ -215,12 +214,11 @@ function calculateRouteFromAtoB (platform) {
      content = '';
      content += '<b>Total distance</b>: ' + summary.distance  + 'm. <br/>';
      content += '<b>Travel Time</b>: ' + summary.travelTime.toMMSS() + ' (in current traffic)';
-  
-  
     summaryDiv.style.fontSize = 'small';
     summaryDiv.style.marginLeft ='5%';
     summaryDiv.style.marginRight ='5%';
     summaryDiv.innerHTML = content;
+    //console.log(content);
     routeInstructionsContainer.appendChild(summaryDiv);
   }
   
@@ -229,8 +227,6 @@ function calculateRouteFromAtoB (platform) {
    * @param {Object} route  A route as received from the H.service.RoutingService
    */
   function addManueversToPanel(route){
-  
-  
   
     var nodeOL = document.createElement('ol'),
       i,
@@ -255,11 +251,11 @@ function calculateRouteFromAtoB (platform) {
         spanInstruction.innerHTML = maneuver.instruction;
         li.appendChild(spanArrow);
         li.appendChild(spanInstruction);
-  
+       
         nodeOL.appendChild(li);
       }
     }
-  
+    //console.log(nodeOL);
     routeInstructionsContainer.appendChild(nodeOL);
   }
   
