@@ -45,16 +45,16 @@
   <div class="w3-sidebar w3-bar-block w3-white w3-card" style="width:15%">
     <h2 class="w3-bar-item w3-blue">App</h2>
     <div class="w3-dropdown-hover">
-      <button class="w3-button">Which area did you feel unsafe in ?
+      <button class="w3-button" style="font-size: 18px">Which area did you feel unsafe in ?
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="w3-dropdown-content w3-bar-block">
-        <a href="#" id="myBtn" class="w3-bar-item w3-button" onclick="return theFunction();">Electronic City</a>
-        <a href="#" id="myBtn" class="w3-bar-item w3-button" onclick="return theFunction();">Infosys Drive</a>
-        <a href="#" id="myBtn" class="w3-bar-item w3-button" onclick="return theFunction();">Hewlett Packard Avenue Road</a>
-        <a href="#" id="myBtn" class="w3-bar-item w3-button" onclick="return theFunction();">NH Service Road</a>
-        <a href="#" id="myBtn" class="w3-bar-item w3-button" onclick="return theFunction();">1st Cross Road</a>
-        <a href="#" id="myBtn" class="w3-bar-item w3-button" onclick="return theFunction();">Forum Mall</a>
+        <a href="#" id="myBtn" style="font-size: 16px" class="w3-bar-item w3-button" onclick="return theFunction();">Electronic City</a>
+        <a href="#" id="myBtn" style="font-size: 16px" class="w3-bar-item w3-button" onclick="return theFunction();">Infosys Drive</a>
+        <a href="#" id="myBtn" style="font-size: 16px" class="w3-bar-item w3-button" onclick="return theFunction();">Hewlett Packard Avenue Road</a>
+        <a href="#" id="myBtn" style="font-size: 16px" class="w3-bar-item w3-button" onclick="return theFunction();">NH Service Road</a>
+        <a href="#" id="myBtn" style="font-size: 16px" class="w3-bar-item w3-button" onclick="return theFunction();">1st Cross Road</a>
+        <a href="#" id="myBtn" style="font-size: 16px" class="w3-bar-item w3-button" onclick="return theFunction();">Forum Mall</a>
       </div>
     </div>
   </div>
@@ -65,19 +65,13 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Confirmation</h5>
+          <h5 class="modal-title" style="font-size: 24px">Rate the Road</h5>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <div class="modal-body">
-          <p>Do you want to save changes to this document before closing?</p>
-          <p class="text-secondary">
-            <small>If you don't save, your changes will be lost.</small>
-          </p>
-
+        <div class="modal-body" style="font-size: 20px">
+          <p>1 is least safe, 5 is most safe.</p>
           <div class="rating-stars-container">
-            <label for="input-1" class="control-label">Two stars:</label>
-            <input id="input-1" name="input-1" class="rating rating-loading" value="2" data-min="0" data-max="5" data-step="0.5" data-size="sm">
-
+              <input id="input-1" name="input-1" class="rating rating-loading" value="1" data-min="0" data-max="5" data-step="0.5" data-size="xs">          
           </div>
         </div>
       </div>
