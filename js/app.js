@@ -249,13 +249,14 @@ function calculateRouteFromAtoB (platform) {
   
         spanArrow.className = 'arrow '  + maneuver.action;
         spanInstruction.innerHTML = maneuver.instruction;
+        console.log();
         li.appendChild(spanArrow);
         li.appendChild(spanInstruction);
        
         nodeOL.appendChild(li);
       }
     }
-    //console.log(nodeOL);
+    console.log(nodeOL);
     routeInstructionsContainer.appendChild(nodeOL);
   }
   
@@ -266,3 +267,5 @@ function calculateRouteFromAtoB (platform) {
   
   // Now use the map as required...
   calculateRouteFromAtoB (platform);
+
+  
