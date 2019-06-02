@@ -309,7 +309,7 @@ function addSVGMarkers(map){
   'text-anchor="middle" fill="${STROKE}" >2.5</text></svg>';
   // Add the first marker
   var bearsIcon = new H.map.Icon(
-    svgMarkup.replace('${FILL}', 'blue').replace('${STROKE}', 'red')),
+    svgMarkup.replace('${FILL}', 'white').replace('${STROKE}', 'red')),
     bearsMarker = new H.map.Marker({lat: 12.9202, lng: 77.621 },
       {icon: bearsIcon});
 
@@ -317,7 +317,7 @@ function addSVGMarkers(map){
 
   //Add the second marker.
   var cubsIcon = new H.map.Icon(
-    svgMarkup1.replace('${FILL}', 'white').replace('${STROKE}', 'orange')),
+    svgMarkup1.replace('${FILL}', 'white').replace('${STROKE}', 'red')),
     cubsMarker = new H.map.Marker({lat: 12.8643, lng: 77.6524 },
       {icon: cubsIcon});
 

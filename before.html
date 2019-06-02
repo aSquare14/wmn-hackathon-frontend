@@ -45,7 +45,19 @@
 </head>
 
 <body>
-
+    <div id="myModal" class="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" style="font-size: 24px">Inform the Police.</h5>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="font-size: 20px">
+              <p>The nearest police station has been informed. You emergency contacts have been informed as well.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="hero-wrap js-fullheight">
         <div class="overlay"></div>
         <div class="container-fluid px-0">
@@ -58,11 +70,25 @@
     </div>
     <button type="button" style="position: absolute;
                                  top: 10px;
-                                right: 10px;" 
-                            class="btn btn-danger">End</button>
+                                right: 10px;" class="btn btn-danger">End</button>
+    <button type="button" style="position: absolute;
+                           top: 50px;
+                           right: 10px;" class="btn btn-warning" onclick="return theFunction();">EMERGENCY</button>
 
     <!-- loader -->
+    <script>
+        function theFunction() {
+            var modal = document.getElementById("myModal");
+            var span = document.getElementsByClassName("close")[0];
+            modal.style.display = "block";
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
 
+    </script>
 
 
     <script src="js/jquery.min.js"></script>
@@ -82,22 +108,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
-    <script>
-        // function addPolylineToMap(heremap) {
-        //     var lineString = new H.geo.LineString();
-
-        //     lineString.pushPoint({ lat: 53.3477, lng: -6.2597 });
-        //     lineString.pushPoint({ lat: 51.5008, lng: -0.1224 });
-        //     lineString.pushPoint({ lat: 48.8567, lng: 2.3508 });
-        //     lineString.pushPoint({ lat: 52.5166, lng: 13.3833 });
-
-        //     map.addObject(new H.map.Polyline(
-        //         lineString, { style: { lineWidth: 4 } }
-        //     ));
-        // }
-
-    </script>
-
 </body>
 
 </html>
